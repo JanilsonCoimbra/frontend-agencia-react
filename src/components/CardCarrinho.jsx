@@ -7,7 +7,6 @@ export default function CardCarrinho(props) {
             dat4.push(result.data)
         }
         ))
-    { console.log(dat4); }
     return (<>
         {dat4.length}
         <hr></hr>

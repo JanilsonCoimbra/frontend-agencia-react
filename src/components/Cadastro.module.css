@@ -1,0 +1,26 @@
+.cadastro{
+    min-width: 60%;
+    max-width: 400px;
+    height: 95vh;
+    background-color: aliceblue;
+    position: fixed;
+    right: 40px;
+    bottom: 10px;
+    z-index: 11;
+    border-radius: 20px;
+    transition: all ease-in-out 2s; 
+    margin-left: 10px;
+    overflow: scroll
+}
+.headerBox{
+    min-width:80%;
+    max-width: 400px;
+    height: 30px;
+    background-color: darkblue;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: white;
+    text-align: center;
+    position: fixed;
+    z-index: 1100;
+}

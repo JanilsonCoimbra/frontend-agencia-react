@@ -1,0 +1,9 @@
+.carrinho{
+    width: 300px;
+    height: 80vh;
+    position: fixed;
+    background-color: aliceblue;
+    margin-top: 9px;
+    padding: 20px;
+    z-index: 900;
+}

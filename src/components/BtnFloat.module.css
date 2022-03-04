@@ -1,0 +1,23 @@
+.btn{
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(0,139,228,1) 35%, rgba(11,5,204,1) 100%);
+    border-radius: 100px;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 12;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn img{
+    width: 80px;
+    height: 70px;
+    
+}
+.btn:hover{
+    transform: rotate(360deg);
+    transition: all ease-in-out 1s;
+    background: radial-gradient(circle, rgba(0,139,228,1) 35%, rgba(255, 255, 255, 0) 100%);
+}

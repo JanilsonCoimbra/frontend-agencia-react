@@ -4,7 +4,6 @@ import { Suspense } from 'react'
 import Load from './Load'
 
 function Cards(props) {
-    const date = Date(props.data)
     function adicionarAgenda() {
         agendaStore.dispatch({ type: props.destinoId})
     }
@@ -14,7 +13,7 @@ function Cards(props) {
                 <div className="card">
                     <div className="card-image waves-effect waves-block waves-light">
                         <Suspense fallback={<Load/>}>
-                            <img className="activator" src={props.img} />
+                            <img className="activator" src={props.img} alt=""/>
                         </Suspense>
                        
                     </div>
@@ -29,7 +28,7 @@ function Cards(props) {
                             <div className='col-2'><i className="material-icons mt-4">connecting_airports</i></div>
                             <div className='bg-info text-center col-5 text-white rounded-pill'><i className="material-icons">flight_land</i><p>{props.volta.split("T")[0]}<span className='d-block'><sup>Retorno</sup></span></p></div>
                         </div>
-                        <p><a className='activator'>Mais informações</a></p>
+                        <p><a href="#id" className='activator'>Mais informações</a></p>
 
                     </div>
                     <div className="card-reveal">
@@ -37,7 +36,7 @@ function Cards(props) {
                         <p>{props.informacoes}</p>
                         <p><sup>Saída: {props.data.split("T")[0]}</sup></p>
                         <p><sup>Retorno: {props.volta.split("T")[0]}</sup></p>
-                        <a className='btn' onClick={() => adicionarAgenda()}>Adicionar a Agenda</a>
+                        <a href="#id" className='btn' onClick={() => adicionarAgenda()}>Adicionar a Agenda</a>
                     </div>
                 </div>
 

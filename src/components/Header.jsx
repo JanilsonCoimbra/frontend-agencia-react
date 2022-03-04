@@ -13,7 +13,7 @@ function Header( props) {
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         
-                        <div className="w-25 "><img className={styles.img} src='./img/logo.png' /></div>
+                        <div className="w-25 "><img className={styles.img} src='./img/logo.png' alt=""/></div>
                         <IconeAgenda notific={props.notific}/>
                         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0">

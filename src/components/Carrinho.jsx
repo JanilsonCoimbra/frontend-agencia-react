@@ -2,7 +2,6 @@ import style from './Carrinho.module.css'
 import CardCarrinho from './CardCarrinho'
 
 function Carrinho(props) {
-    const valores = props.idDestino;
     return (
     <><section className={style.carrinho}>
         <CardCarrinho idDestino={props.idDestino}></CardCarrinho>    

@@ -23,7 +23,7 @@ function BtnFloat() {
         })
     },[])
     return (<>
-       <div onClick={openCadastro} className={'bg-danger',styles.btn}><img src='./img/aviao.png'></img></div>
+       <div onClick={openCadastro} className={styles.btn}><img src='./img/aviao.png'></img></div>
 
     </>)
 }

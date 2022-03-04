@@ -1,5 +1,5 @@
 import style from './Carrinho.module.css'
-import CardCarrinho from './CardCarrinho'
+/*import CardCarrinho from './CardCarrinho'*/
 
 function Carrinho(props) {
     return (

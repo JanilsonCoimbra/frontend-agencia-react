@@ -1,10 +1,9 @@
 import styles from './Cards.module.css'
 import { agendaStore } from '../stores/agendaStore'
-import { Suspense } from 'react'
-import Load from './Load'
 
 function Cards(props) {
-    function adicionarAgenda() {
+    function adicionarAgenda(e) {
+        e.preventDefault()
         agendaStore.dispatch({ type: props.destinoId})
     }
     return (
@@ -12,10 +11,7 @@ function Cards(props) {
             <div className={styles.tamanho}>
                 <div className="card">
                     <div className="card-image waves-effect waves-block waves-light">
-                        <Suspense fallback={<Load/>}>
                             <img className="activator" src={props.img} alt=""/>
-                        </Suspense>
-                       
                     </div>
                     <div className="card-content align-items-center" data-aos="flip-left"
                         data-aos-easing="ease-out-cubic"
@@ -29,17 +25,15 @@ function Cards(props) {
                             <div className='bg-info text-center col-5 text-white rounded-pill'><i className="material-icons">flight_land</i><p>{props.volta.split("T")[0]}<span className='d-block'><sup>Retorno</sup></span></p></div>
                         </div>
                         <p><a href="#id" className='activator'>Mais informações</a></p>
-
                     </div>
                     <div className="card-reveal">
                         <span className="card-title grey-text text-darken-4">{props.title}<i className="material-icons right">close</i></span>
                         <p>{props.informacoes}</p>
                         <p><sup>Saída: {props.data.split("T")[0]}</sup></p>
                         <p><sup>Retorno: {props.volta.split("T")[0]}</sup></p>
-                        <a href="#id" className='btn' onClick={() => adicionarAgenda()}>Adicionar a Agenda</a>
+                        <button className='btn' onClick={(e) => adicionarAgenda(e)}>Adicionar a Agenda</button>
                     </div>
                 </div>
-
             </div>
         </>
     )

@@ -11,7 +11,7 @@ function Destinos() {
 
     const [destinos, setDestino] = useState([])
     useEffect(() => {
-        api.get('/destinos').then((res) => setDestino(res.data), setCardStatus(false)).catch((err) => (Alert(err)))
+        api.get('/destinos').then((res) => ([setDestino(res.data), setCardStatus(false)])).catch((err) => (Alert(err)))
     }, [])
 
     return (

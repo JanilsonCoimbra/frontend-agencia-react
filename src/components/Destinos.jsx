@@ -10,7 +10,7 @@ function Destinos() {
     const [cardStatus, setCardStatus] = useState(true)
 
     const [destinos, setDestino] = useState([])
-    const urlSeach = "/destinos?page=0&size=1"
+    const urlSeach = "/destinos"
     useEffect(() => {
         api.get(urlSeach).then((res) => ([setDestino(res.data.content), setCardStatus(false)])).catch((err) => (Alert(err)))
     }, [])

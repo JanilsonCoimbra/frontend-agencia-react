@@ -9,7 +9,6 @@ import { useEffect, useState } from 'react'
 function Main() {
     AOS.init();
     const urlSeach = "/destinos?page=0&size=3"
-    const [cardStatus, setCardStatus] = useState(true)
     const [destinos, setDestino] = useState([])
     useEffect(() => {
         api.get(urlSeach).then((res) => ([setDestino(res.data.content), setCardStatus(false)])).catch((err) => (alert(err)))

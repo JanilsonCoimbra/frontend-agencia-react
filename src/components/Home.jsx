@@ -11,7 +11,7 @@ function Main() {
     const urlSeach = "/destinos?page=0&size=3"
     const [destinos, setDestino] = useState([])
     useEffect(() => {
-        api.get(urlSeach).then((res) => ([setDestino(res.data.content), setCardStatus(false)])).catch((err) => (alert(err)))
+        api.get(urlSeach).then((res) => setDestino(res.data.content)).catch((err) => (alert(err)))
     }, [])
     return (
         <>

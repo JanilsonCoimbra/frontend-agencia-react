@@ -7,7 +7,7 @@ import BtnFloat from './components/BtnFloat'
 import { useState } from 'react'
 import { store } from './stores/store'
 import { agendaStore } from './stores/agendaStore'
-/*import Carrinho from './components/Carrinho'*/
+import Carrinho from './components/Carrinho'
 
 function App() {
   const [cadastro, setCadastro] = useState(false)
@@ -33,7 +33,7 @@ function App() {
       <Router>
         <Header notific={notificar.length} />
         <BtnFloat />
-        {/*<Carrinho idDestino={notificar}></Carrinho>*/}
+        {<Carrinho idDestino={notificar}></Carrinho>}
         {cadastro &&
           <Suspense fallback={<Load />}><Cadastro /></Suspense>
         }

@@ -22,7 +22,7 @@ function Main() {
             </div>
             <section className={styles.sections1}>
                 <h3 className={styles.titulo}>Escolha os melhores pontos da Bahia</h3>
-                {destinos.map((opcoes) => <Cards title={opcoes.destinoName} informacoes={opcoes.destinoDescricao} img={opcoes.destinoFoto} data={opcoes.destinoData} volta={opcoes.destinoRetornoData} destinoId={opcoes.destinoId}></Cards>)}
+                {destinos.map((opcoes) => <Cards title={opcoes.destinoName} informacoes={opcoes.destinoDescricao} img={opcoes.destinoFoto} data={opcoes.destinoData} volta={opcoes.destinoRetornoData} destinoId={JSON.stringify(opcoes)}></Cards>)}
             </section>
             <section className={styles.sections2}>
                 <div data-aos="flip-left"

@@ -1,5 +1,4 @@
 import React from 'react'
-import Style from './Carrinho.module.css'
 import { AgendaContext } from '../Providers/Agenda'
 
 

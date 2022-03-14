@@ -15,9 +15,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function IconeAgenda() {
-  const { carrinho, setAgenda } = React.useContext(AgendaContext)
+  const { carrinho } = React.useContext(AgendaContext)
+  console.log()
   return (<>
-    <IconButton data-bs-toggle="modal" data-bs-target="#exampleModal" aria-label="cart">
+  
+    <IconButton data-bs-toggle="modal" href="#exampleModalToggle" role="button" aria-label="cart">
       <StyledBadge badgeContent={carrinho.length} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>

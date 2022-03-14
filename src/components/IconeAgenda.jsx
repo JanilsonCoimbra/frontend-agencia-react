@@ -19,7 +19,7 @@ export default function IconeAgenda() {
   console.log()
   return (<>
   
-    <IconButton data-bs-toggle="modal" href="#exampleModalToggle" role="button" aria-label="cart">
+    <IconButton data-bs-toggle="modal" data-bs-target="#exampleModal">
       <StyledBadge badgeContent={carrinho.length} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>

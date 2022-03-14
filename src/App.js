@@ -6,7 +6,6 @@ import Load from './components/Load'
 import BtnFloat from './components/BtnFloat'
 import { useState } from 'react'
 import { store } from './stores/store'
-import { agendaStore } from './stores/agendaStore'
 import Carrinho from './components/Carrinho'
 
 function App() {
@@ -17,23 +16,17 @@ function App() {
   const QuemSomos = lazy(() => import('./components/QuemSomos'))
   const Contatos = lazy(() => import('./components/Contatos'))
 
-  const [notificar, setNotific] = useState([])
   useEffect(() => {
     store.subscribe(() => {
       setCadastro(store.getState())
     })
   }, [])
-  useEffect(() => {
-    agendaStore.subscribe(() => {
-      setNotific(agendaStore.getState())
-    })
-  },[])
   return (
     <>
       <Router>
-        <Header notific={notificar.length} />
+        <Header />
         <BtnFloat />
-        {<Carrinho idDestino={notificar}></Carrinho>}
+        {<Carrinho ></Carrinho>}
         {cadastro &&
           <Suspense fallback={<Load />}><Cadastro /></Suspense>
         }

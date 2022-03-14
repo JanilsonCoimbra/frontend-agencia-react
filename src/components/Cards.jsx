@@ -1,10 +1,15 @@
+import React from 'react'
+import { AgendaContext } from '../Providers/Agenda'
 import styles from './Cards.module.css'
-import { agendaStore } from '../stores/agendaStore'
+
 
 function Cards(props) {
+
+    const { setAgenda } = React.useContext(AgendaContext)
+
     function adicionarAgenda(e) {
         e.preventDefault()
-        agendaStore.dispatch({ type: props.destinoId})
+        setAgenda(JSON.parse(props.destinoId))
     }
     return (
         <>
@@ -17,7 +22,7 @@ function Cards(props) {
                         data-aos-easing="ease-out-cubic"
                         data-aos-duration="1000">
                         <span className="card-title activator grey-text text-darken-4">{props.title}<i className="material-icons right">more_vert</i></span>
-                        <p><sup>Codigo: BH{props.destinoId}</sup></p>
+                        <p><sup>Codigo: BH{props.destinoId.destinoId}</sup></p>
                         <hr></hr>
                         <div className='row'>
                             <div className='bg-primary text-center col-5 text-white rounded-3 rounded-pill'><i className="material-icons">flight_takeoff</i><p>{props.data.split("T")[0]}<span className='d-block'><sup>Saída</sup></span></p></div>
@@ -31,7 +36,7 @@ function Cards(props) {
                         <p>{props.informacoes}</p>
                         <p><sup>Saída: {props.data.split("T")[0]}</sup></p>
                         <p><sup>Retorno: {props.volta.split("T")[0]}</sup></p>
-                        <button className='btn' onClick={(e) => adicionarAgenda(e)}>Adicionar a Agenda</button>
+                        <button className='btn' onClick={(e) => adicionarAgenda(e)}>Adicionar ao Carrinho</button>
                     </div>
                 </div>
             </div>

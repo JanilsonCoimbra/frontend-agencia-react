@@ -1,7 +1,6 @@
 import styles from './destinos.module.css'
 import api from '../api'
-import {useState } from 'react'
-import { useEffect } from 'react'
+import {useState, useEffect } from 'react'
 import { Alert } from '@mui/material'
 import Load from './Load'
 import Cards from './Cards'
@@ -14,11 +13,11 @@ function Destinos() {
     useEffect(() => {
         api.get(urlSeach).then((res) => ([setDestino(res.data.content), setCardStatus(false)])).catch((err) => (Alert(err)))
     }, [])
-
+    
     return (
         <section className={styles.secoes}>
             {!cardStatus 
-            ?destinos.map((opcoes) =><Cards title={opcoes.destinoName} informacoes={opcoes.destinoDescricao} img={opcoes.destinoFoto} data={opcoes.destinoData} volta={opcoes.destinoRetornoData} destinoId={opcoes.destinoId}></Cards>)
+            ?destinos.map((opcoes) =><Cards title={opcoes.destinoName} informacoes={opcoes.destinoDescricao} img={opcoes.destinoFoto} data={opcoes.destinoData} volta={opcoes.destinoRetornoData} destinoId={JSON.stringify(opcoes)}></Cards>)
             :<Load></Load>
             }
         </section>

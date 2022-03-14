@@ -2,10 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {AgendaProvider} from './Providers/Agenda'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AgendaProvider>
+      <App />
+    </AgendaProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

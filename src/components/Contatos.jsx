@@ -39,14 +39,14 @@ function Contatos() {
                     <input type="name" className="form-control" id="exampleInputname" ref={name} required />
                 </div>
                 <div className="mb-3 col-11">
-                    <label for="exampleInputname" className="form-label">Nome</label>
+                    <label for="exampleInputname" className="form-label">Email</label>
                     <input type="email" className="form-control" id="exampleInputname" ref={email} required />
                 </div>
                 <div className="mb-3 col-11">
                     <label for="exampleInputEmail1" className="form-label">Mensagem</label>
                     <textarea className="form-text" id="exampleCheck1" ref={mensagem} required />
                 </div>
-                <button type="submit" className="btn btn-primary col-11" onClick={e => enviarMensagem(e)}>Submit</button>
+                <button type="submit" className="btn btn-primary col-11" onClick={e => enviarMensagem(e)}>Enviar</button>
             </form>
         </section>
     </>)

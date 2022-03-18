@@ -13,7 +13,7 @@
     overflow: scroll
 }
 .headerBox{
-    min-width:80%;
+    min-width:60%;
     max-width: 400px;
     height: 30px;
     background-color: darkblue;

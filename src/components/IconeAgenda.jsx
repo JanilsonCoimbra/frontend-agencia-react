@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { AgendaContext } from '../Providers/Agenda'
+import { Link } from 'react-router-dom';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -18,12 +19,14 @@ export default function IconeAgenda() {
   const { carrinho } = React.useContext(AgendaContext)
   console.log()
   return (<>
-  
-    <IconButton data-bs-toggle="modal" data-bs-target="#exampleModal">
-      <StyledBadge badgeContent={carrinho.length} color="secondary">
-        <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton>
+
+    <Link to={"/carrinho"}>
+      <IconButton>
+        <StyledBadge badgeContent={carrinho.length} color="secondary">
+          <ShoppingCartIcon />
+        </StyledBadge>
+      </IconButton>
+    </Link>
   </>
   );
 }

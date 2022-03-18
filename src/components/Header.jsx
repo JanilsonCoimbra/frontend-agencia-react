@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom'
 import styles from './header.module.css'
 import IconeAgenda from './IconeAgenda'
+import { Navbar, Container, Form, FormControl, Nav, Button } from 'react-bootstrap'
 
-function Header( props) {
-    return (
-        <>
-            <div className={styles.topo}>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light" >
-                    <div className="container-fluid bg-light">
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <div className="w-25 "><img className={styles.img} src='./img/logo.png' alt=""/></div>
-                        <IconeAgenda notific={props.notific}/>
-                        <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+function Header(props) {
+
+    return (<><div className={styles.topo}>
+    <Navbar bg="light h-100" expand="lg" >
+        <Container fluid className="justify-content">
+            <Navbar.Brand href="#"><img className={styles.img} src='./img/logo.png' alt=""/></Navbar.Brand>
+            <IconeAgenda notific={props.notific}/>
+            <Navbar.Toggle aria-controls="navbarScroll" />
+            
+            <Navbar.Collapse id="navbarScroll">
+                <Nav
+                    className="me-auto my-2 my-lg-0 W-100 p-0"
+                    style={{ maxHeight: '550px' }}
+                    navbarScroll
+                >
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 bg-light w-100">
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/">Home</Link>
                                 </li>
@@ -27,21 +30,29 @@ function Header( props) {
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/Contatos">Contatos</Link>
-                                </li>                             
+                                </li>   
+                                <li>
+                                
+                                </li>                          
                             </ul>
-                            
-                            <form className="d-flex">
-                            
-                                <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                                <button className="btn btn-outline-success" type="submit">Search</button>
-                            </form>
-                            
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div className={styles.topoFundo}></div>
-        </>
+                </Nav>
+                
+                <Form className="d-flex">
+                    <FormControl
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                    />
+                    <Button variant="outline-success">Search</Button>
+                </Form>
+            </Navbar.Collapse>
+            
+        </Container>
+    </Navbar>
+    </div>
+    <div className={styles.topoFundo}></div>
+    </>
     )
 }
 export default Header

@@ -26,7 +26,6 @@ function App() {
       <Router>
         <Header />
         <BtnFloat />
-        {<Carrinho ></Carrinho>}
         {cadastro &&
           <Suspense fallback={<Load />}><Cadastro /></Suspense>
         }
@@ -56,6 +55,7 @@ function App() {
               <Contatos />
             </Suspense>
           } />
+          <Route path="/carrinho" element={<Carrinho />} />
         </Routes>
         <Rodape />
       </Router>

@@ -1,4 +1,5 @@
 import styles from './QuemSomos.module.css'
+import {memo} from 'react'
 function QuemSomos() {
     return (
         <>
@@ -20,4 +21,4 @@ function QuemSomos() {
         </>
     )
 }
-export default QuemSomos
+export const QuemSomosState =  memo(QuemSomos)

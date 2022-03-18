@@ -1,6 +1,6 @@
 import styles from './destinos.module.css'
 import api from '../api'
-import {useState, useEffect } from 'react'
+import {useState, useEffect, memo } from 'react'
 import { Alert } from '@mui/material'
 import Load from './Load'
 import Cards from './Cards'
@@ -23,7 +23,7 @@ function Destinos() {
         </section>
     )
 }
-export default Destinos
+export const DestinosComponents = memo(Destinos)
 
 
 

@@ -1,27 +1,12 @@
 import styles from './BtnFloat.module.css'
-import { store } from '../stores/store'
-import { useEffect, useState } from 'react'
-
+import { useContext } from 'react'
+import { AgendaContext } from '../Providers/Agenda'
 
 function BtnFloat() {
-    const [stat, setState] = useState(false)
-
+    const {setPainelState } = useContext(AgendaContext)
     function openCadastro() {
-        if(stat){
-            store.dispatch({ type: false })
-            setState(false)
-        }else{
-            store.dispatch({ type: true })
-            setState(true)
-        }
-        
+        setPainelState()
     }
-
-    useEffect(() =>{
-        store.subscribe(()=>{
-            setState(store.getState())
-        })
-    },[])
     return (<>
        <div onClick={openCadastro} className={styles.btn}><img src='./img/aviao.png' alt=""></img></div>
 

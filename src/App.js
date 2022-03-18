@@ -1,33 +1,30 @@
 import Header from './components/Header'
 import Rodape from './components/Rodape.jsx'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { lazy, Suspense, useEffect } from 'react'
+import { lazy, Suspense, useContext } from 'react'
 import Load from './components/Load'
 import BtnFloat from './components/BtnFloat'
-import { useState } from 'react'
-import { store } from './stores/store'
 import Carrinho from './components/Carrinho'
+import { AgendaContext } from './Providers/Agenda'
+import { DestinosComponents } from './components/Destinos'
+import { CadastroStado } from './components/Cadastro'
+import { QuemSomosState } from './components/QuemSomos'
 
 function App() {
-  const [cadastro, setCadastro] = useState(false)
+
+  const { Painel } = useContext(AgendaContext)
   const Home = lazy(() => import('./components/Home.jsx'))
-  const Destinos = lazy(() => import('./components/Destinos'))
-  const Cadastro = lazy(() => import('./components/Cadastro'))
-  const QuemSomos = lazy(() => import('./components/QuemSomos'))
   const Contatos = lazy(() => import('./components/Contatos'))
 
-  useEffect(() => {
-    store.subscribe(() => {
-      setCadastro(store.getState())
-    })
-  }, [])
   return (
     <>
       <Router>
         <Header />
         <BtnFloat />
-        {cadastro &&
-          <Suspense fallback={<Load />}><Cadastro /></Suspense>
+        {Painel &&
+          <Suspense fallback={<Load />}>
+            <CadastroStado />
+          </Suspense>
         }
         <Routes>
           <Route exact path="/" element={
@@ -40,16 +37,8 @@ function App() {
               <Home />
             </Suspense>
           } />
-          <Route path="/Destinos" element={
-            <Suspense fallback={<Load />}>
-              <Destinos />
-            </Suspense>
-          } />
-          <Route path="/QuemSomos" element={
-            <Suspense fallback={<Load />}>
-              <QuemSomos />
-            </Suspense>
-          } />
+          <Route path="/Destinos" element={<DestinosComponents />}/>
+          <Route path="/QuemSomos" element={<QuemSomosState />} />
           <Route path="/Contatos" element={
             <Suspense fallback={<Load />}>
               <Contatos />

@@ -6,9 +6,9 @@ import api from '../api'
 
 function Contatos() {
 
-    const name = useRef()
-    const email = useRef()
-    const mensagem = useRef()
+    let name = useRef()
+    let email = useRef()
+    let mensagem = useRef()
 
     function enviarMensagem(e) {
         e.preventDefault()

@@ -17,7 +17,7 @@ function Destinos() {
     return (
         <section className={styles.secoes}>
             {!cardStatus 
-            ?destinos.map((opcoes) =><Cards title={opcoes.destinoName} informacoes={opcoes.destinoDescricao} img={opcoes.destinoFoto} data={opcoes.destinoData} volta={opcoes.destinoRetornoData} destinoId={JSON.stringify(opcoes)}></Cards>)
+            ?destinos.map((opcoes) =><Cards title={opcoes.destinoName} informacoes={opcoes.destinoDescricao} img={opcoes.destinoFoto} data={opcoes.destinoData} volta={opcoes.destinoRetornoData} idDestino={opcoes.destinoId} destinoId={JSON.stringify(opcoes)}></Cards>)
             :<Load></Load>
             }
         </section>

@@ -1,21 +1,26 @@
 import styles from './Cadastro.module.css'
 import { Suspense } from 'react/cjs/react.production.min'
 import Load from './Load'
-import { Accordion, Form, Button, ListGroup } from 'react-bootstrap'
+import { Accordion, ListGroup } from 'react-bootstrap'
 import api from '../api'
-import {memo, useState, useContext } from 'react'
+import { memo, useState, useContext, useEffect } from 'react'
 import { AgendaContext } from '../Providers/Agenda'
+import EditarMensagens from './EditarMensagens'
 
 function Cadastro() {
   const [mensagens, setMensagens] = useState([])
-  const {setPainelState } = useContext(AgendaContext)
-  api.get("/contato").then((resp) => setMensagens(resp.data.content)).catch(err => alert(err))
-  function DeleteMensagem(id){
+  const { setPainelState } = useContext(AgendaContext)
+  useEffect(() => {
+    api.get("/contato").then((resp) => setMensagens(resp.data.content)).catch(err => alert(err))
+  }, [])
+  function DeleteMensagem(id) {
     api.delete(`/contato/${id}`).catch(err => alert(err))
   }
   function openCadastro() {
     setPainelState()
-}
+  }
+  //-------------------------------------------
+
   return (<><section className={styles.cadastro}>
     <header className={styles.headerBox} onClick={openCadastro}>Box de informações</header>
     <Suspense fallback={<Load />}>
@@ -24,42 +29,29 @@ function Cadastro() {
           <Accordion.Header>Ver Mensagens</Accordion.Header>
           <Accordion.Body>
             <ListGroup.Item as="li" className="d-block justify-content-between align-items-start">
-              {mensagens.map((res) =><ListGroup.Item as="li" className="d-flex w-100 justify-content-between align-items-start"><div className="ms-2 me-auto"><div className="fw-bold">{res.nome}</div>{res.mensagem}<div onClick={(e)=> DeleteMensagem(res.id)}>Excluir</div></div></ListGroup.Item>)}
+              {mensagens.map((res) =>
+                <ListGroup.Item as="li" className="d-flex w-100 justify-content-between align-items-start">
+                  <div className="ms-2 me-auto d-flex w-100 justify-content-between flex-wrap">
+                    <div>
+                      
+                      <div className="fw-bold">{res.nome}<sup>{res.id}</sup></div>
+                      <div>{res.Email}</div>
+                      <div>{res.mensagem}</div>
+                    </div>
+                    <div className='d-flex flex-column'>
+                      <div className={styles.icons}><span className="material-icons" onClick={(e) => DeleteMensagem(res.id)}>delete</span></div>
+                    </div>
+                    <Accordion defaultActiveKey="1" flush className='w-100 p-0'>
+                      <Accordion.Item eventKey="0">
+                        <Accordion.Header >Editar Mensagem<sup>{res.id}</sup></Accordion.Header>
+                        <Accordion.Body>
+                            <EditarMensagens idMensagem={res.id} nome={res.nome} email={res.Email} mensagem={res.mensagem}></EditarMensagens>
+                        </Accordion.Body>
+                      </Accordion.Item>
+                    </Accordion>
+                  </div>
+                </ListGroup.Item>)}
             </ListGroup.Item>
-          </Accordion.Body>
-        </Accordion.Item>
-        <Accordion.Item eventKey="1">
-          <Accordion.Header>Cadastrar Destinos</Accordion.Header>
-          <Accordion.Body>
-            <Form>
-              <Form.Group className="mb-3" controlId="formBasicText">
-                <Form.Label>Destino</Form.Label>
-                <Form.Control type="email" placeholder="Nome do Destino" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicText">
-                <Form.Label>Descrição</Form.Label>
-                <Form.Control type="email" placeholder="Descrição" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicNumber">
-                <Form.Label>Valor</Form.Label>
-                <Form.Control type="Number" placeholder="Valor" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicText">
-                <Form.Label>Foto</Form.Label>
-                <Form.Control type="Number" placeholder="Foto" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicDate">
-                <Form.Label>Data Saida</Form.Label>
-                <Form.Control type="Number" placeholder="Data" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicDate">
-                <Form.Label>Data Retorno</Form.Label>
-                <Form.Control type="Number" placeholder="Data" />
-              </Form.Group>
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
@@ -67,4 +59,4 @@ function Cadastro() {
   </section>
   </>)
 }
-export const CadastroStado =  memo(Cadastro)
+export const CadastroStado = memo(Cadastro)

@@ -36,7 +36,6 @@ function Header(props) {
                                 </li>                          
                             </ul>
                 </Nav>
-                
                 <Form className="d-flex">
                     <FormControl
                         type="search"
@@ -47,7 +46,6 @@ function Header(props) {
                     <Button variant="outline-success">Search</Button>
                 </Form>
             </Navbar.Collapse>
-            
         </Container>
     </Navbar>
     </div>

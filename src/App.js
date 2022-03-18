@@ -9,6 +9,8 @@ import { AgendaContext } from './Providers/Agenda'
 import { DestinosComponents } from './components/Destinos'
 import { CadastroStado } from './components/Cadastro'
 import { QuemSomosState } from './components/QuemSomos'
+import Edit from './components/Edit'
+import CadastrarDestino from './components/CadastrarDestino'
 
 function App() {
 
@@ -39,6 +41,8 @@ function App() {
           } />
           <Route path="/Destinos" element={<DestinosComponents />}/>
           <Route path="/QuemSomos" element={<QuemSomosState />} />
+          <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/cadastrar" element={<CadastrarDestino />} />
           <Route path="/Contatos" element={
             <Suspense fallback={<Load />}>
               <Contatos />

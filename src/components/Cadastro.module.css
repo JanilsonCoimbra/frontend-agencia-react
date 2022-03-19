@@ -1,6 +1,5 @@
 .cadastro{
-    min-width: 60%;
-    max-width: 400px;
+    width: 80%;
     height: 95vh;
     background-color: aliceblue;
     position: fixed;
@@ -13,8 +12,7 @@
     overflow: scroll
 }
 .headerBox{
-    min-width:60%;
-    max-width: 400px;
+    width: 80%;
     height: 30px;
     background-color: darkblue;
     border-top-left-radius: 20px;
